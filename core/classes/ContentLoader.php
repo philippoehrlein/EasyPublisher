@@ -4,11 +4,67 @@
  */
 class ContentLoader {
     private $markdownParser;
+    private $suffix = 'txt';
+    private static $config = null;
     
     public function __construct() {
         // Initialize the Markdown parser
         require_once CORE_PATH . '/classes/MarkdownParser.php';
         $this->markdownParser = new MarkdownParser();
+        
+        // Load config if not already loaded
+        if (self::$config === null) {
+            self::$config = $this->loadConfig();
+        }
+    }
+    
+    /**
+     * Loads the configuration from config.txt
+     * 
+     * @return array The configuration array
+     */
+    private function loadConfig() {
+        $config = [];
+        $configFile = CONTENT_PATH . '/info/config.txt';
+
+        if(!file_exists($configFile)) {
+            $configFile = CONTENT_PATH . '/info/config.md';
+        }
+        
+        if (file_exists($configFile)) {
+            $content = file_get_contents($configFile);
+            $lines = explode("\n", $content);
+            
+            foreach ($lines as $line) {
+                $line = trim($line);
+                if (empty($line) || strpos($line, '@') !== 0) {
+                    continue;
+                }
+                
+                $parts = explode(' ', $line, 2);
+                if (count($parts) === 2) {
+                    $key = substr($parts[0], 1); // Entferne das @
+                    $value = trim($parts[1]);
+                    $config[$key] = $value;
+                }
+            }
+        }
+
+        $this->suffix = $config['suffix'] ?? 'txt';
+        return $config;
+    }
+    
+    /**
+     * Returns a configuration value or all configuration values
+     * 
+     * @param string|null $key The configuration key to retrieve
+     * @return mixed The configuration value or all values if no key is provided
+     */
+    public static function getConfig($key = null) {
+        if ($key === null) {
+            return self::$config ?? [];
+        }
+        return self::$config[$key] ?? null;
     }
     
     /**
@@ -19,13 +75,13 @@ class ContentLoader {
      */
     public function getContentBySlug($slug) {
         // First check in the info folder
-        $infoPath = CONTENT_PATH . '/info/' . $slug . '.txt';
+        $infoPath = CONTENT_PATH . '/info/' . $slug . '.' . $this->suffix;
         if (file_exists($infoPath)) {
             return $this->parseContentFile($infoPath);
         }
         
         // Then search in the main directory
-        $files = glob(CONTENT_PATH . '/*.txt');
+        $files = glob(CONTENT_PATH . '/*.' . $this->suffix);
         
         // Search all files and apply the correct slug logic
         foreach ($files as $file) {
@@ -50,7 +106,7 @@ class ContentLoader {
         $result = [];
         
         // All text files in the Content directory
-        $files = glob(CONTENT_PATH . '/*.txt');
+        $files = glob(CONTENT_PATH . '/*.' . $this->suffix);
         
         // Get the WikiLinks from meta.txt
         $tocEntries = $this->getTocFromMeta();
@@ -65,7 +121,7 @@ class ContentLoader {
                 
                 // Search all files for matches
                 foreach ($remainingFiles as $key => $file) {
-                    $fileName = basename($file, '.txt');
+                    $fileName = basename($file, '.' . $this->suffix);
                     
                     // Check for exact match or with prefix (case insensitive)
                     if (strcasecmp($fileName, $entry) === 0 || 
@@ -103,7 +159,7 @@ class ContentLoader {
      * @return array|null List of slugs in the desired order or null
      */
     private function getTocFromMeta() {
-        $metaPath = CONTENT_PATH . '/info/meta.txt';
+        $metaPath = CONTENT_PATH . '/info/meta.' . $this->suffix;
         if (!file_exists($metaPath)) {
             return null;
         }

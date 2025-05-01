@@ -10,7 +10,7 @@ class ImageProcessor {
      * @return string The processed markdown
      */
     public function processImages($markdown) {
-      // 1. Klassische Markdown-Bilder
+      // 1. Classic Markdown Images
       $markdown = preg_replace_callback('/!\[.*?\]\((.*?)\)/', function($matches) {
           $image = $matches[1];
           if ($this->checkImageExists($image)) {
@@ -19,7 +19,7 @@ class ImageProcessor {
           return $matches[0];
       }, $markdown);
   
-      // 2. Nur Dateinamen (z. B. "bild.jpg")
+      // 2. Only Filenames (e.g. "image.jpg")
       $markdown = preg_replace_callback('/(?<=^|\s)([^\s]+\.(jpg|jpeg|png|gif))(?=\s|$)/i', function($matches) {
           $image = $matches[1];
           if ($this->checkImageExists($image)) {

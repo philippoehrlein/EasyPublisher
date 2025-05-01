@@ -157,4 +157,54 @@ function getFileNameBySlug($slug) {
         }
     }
     return null;
-}  
+}
+
+/**
+ * Gibt die HTML-Tags für alle CSS-Plugins zurück
+ * 
+ * @return string HTML-Tags für CSS-Plugins
+ */
+function getPluginCssTags() {
+    $html = '';
+    
+    // Theme Plugins
+    $pluginFiles = glob(THEME_PATH . '/plugins/*.css');
+    foreach ($pluginFiles as $file) {
+        $url = 'theme/plugins/' . basename($file);
+        $html .= "<link rel=\"stylesheet\" href=\"$url\">\n";
+    }
+
+    // Core Plugins
+    $pluginFiles = glob(CORE_PATH . '/assets/plugins/*.css');
+    foreach ($pluginFiles as $file) {
+        $url = 'core/assets/plugins/' . basename($file);
+        $html .= "<link rel=\"stylesheet\" href=\"$url\">\n";
+    }
+    
+    return $html;
+}
+
+/**
+ * Gibt die HTML-Tags für alle JavaScript-Plugins zurück
+ * 
+ * @return string HTML-Tags für JavaScript-Plugins
+ */
+function getPluginJsTags() {
+    $html = '';
+    
+    // Core Plugins
+    $pluginFiles = glob(CORE_PATH . '/assets/plugins/*.js');
+    foreach ($pluginFiles as $file) {
+        $url = 'core/assets/plugins/' . basename($file);
+        $html .= "<script src=\"$url\"></script>\n";
+    }
+    
+    // Theme Plugins
+    $pluginFiles = glob(THEME_PATH . '/plugins/*.js');
+    foreach ($pluginFiles as $file) {
+        $url = 'theme/plugins/' . basename($file);
+        $html .= "<script src=\"$url\"></script>\n";
+    }
+    
+    return $html;
+}

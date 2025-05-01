@@ -10,3 +10,48 @@ RewriteRule ^(.*)$ index.php [QSA,L]
 
 # Fehlerseite für 404-Fehler
 ErrorDocument 404 /index.php 
+
+# Für Dateien die nicht angezeigt werden sollen
+<FilesMatch "\.(md|txt|json)$">
+    Require all denied
+</FilesMatch>
+
+
+# Gzip Kompression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/json
+</IfModule>
+
+# Browser Caching für versionierte Assets verlängern
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # Versionierte Assets haben einen langen Cache (1 Jahr)
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    
+    # Bilder und andere statische Assets
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# Sicherheit
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set X-Frame-Options "SAMEORIGIN"
+    
+    # Cache-Control für versionierte Assets
+    <FilesMatch "\.(css|js)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+</IfModule> 

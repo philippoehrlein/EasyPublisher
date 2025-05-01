@@ -1,25 +1,25 @@
 <?php
 /**
- * easyPublisher - Ein minimalistischer Markdown-Publisher für iA Writer
+ * easyPublisher - A minimalist Markdown publisher for Markdown files
  */
 
-// Fehleranzeige für die Entwicklung (in Produktion auskommentieren oder entfernen)
+// Error display for development (comment out or remove in production)
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // Composer Autoloader
 require 'vendor/autoload.php';
 
-// Konfiguration
+// Configuration
 define('BASE_PATH', __DIR__);
 define('CONTENT_PATH', BASE_PATH . '/content');
 define('CORE_PATH', BASE_PATH . '/core');
 define('THEME_PATH', BASE_PATH . '/theme');
 
-// Hilfsfunktionen laden
+// Load helper functions
 require CORE_PATH . '/helpers/functions.php';
 
-// Router initialisieren und ausführen
+// Initialize and run the router
 require CORE_PATH . '/classes/Router.php';
 $router = new Router();
 $router->route();

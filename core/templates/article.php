@@ -9,5 +9,7 @@
     <footer>
         <?= $this->snippet('footer'); ?>
     </footer>
-    <?= $this->snippet('navigation', ['contentList' => $contentList]); ?>
+    <?php if (isset($contentList)): ?>
+        <?= $this->snippet('navigation', ['contentList' => $contentList]); ?>
+    <?php endif; ?>
 </div>

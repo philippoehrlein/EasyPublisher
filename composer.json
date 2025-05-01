@@ -1,0 +1,7 @@
+{
+    "require": {
+        "philippoehrlein/inline-footnotes": "^1.0",
+        "league/commonmark": "^2.6",
+        "wnx/commonmark-mark-extension": "^1.3"
+    }
+}

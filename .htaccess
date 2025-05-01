@@ -1,0 +1,12 @@
+# URL-Rewriting aktivieren
+RewriteEngine On
+
+# Weiterleitung für Dateien und Verzeichnisse, die tatsächlich existieren, verhindern
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Alle Anfragen an index.php weiterleiten
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# Fehlerseite für 404-Fehler
+ErrorDocument 404 /index.php 

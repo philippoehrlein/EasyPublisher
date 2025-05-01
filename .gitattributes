@@ -1,0 +1,11 @@
+# Git
+.github/ export-ignore
+.gitattributes export-ignore
+.gitignore export-ignore
+README.md export-ignore
+
+# DDEV
+.ddev/ export-ignore
+
+# Composer
+composer.lock export-ignore

@@ -1,0 +1,25 @@
+# How to Use easyPublisher
+
+## Step 1: Write
+
+Use any Markdown editor you like — for example, iA Writer or Typora.
+
+Keep writing as usual. There's no need to export or format anything.
+
+## Step 2: Sync
+
+Just sync your writing project with the `/content` folder in easyPublisher.  
+This can be done with a folder sync tool, cloud service, or symbolic link.
+
+## Step 3: View
+
+Open easyPublisher in your browser. Your synced texts appear instantly — no rebuilds, no configuration.
+
+
+---
+
+## Tips
+
+- Use `#` for headings
+- Use `[[filename|Title]]` for internal links
+- Plugins add extra features: highlighting, sharing, exporting, etc.

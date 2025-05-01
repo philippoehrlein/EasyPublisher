@@ -1,0 +1,94 @@
+:root {
+  --marker-list-background-color: #fff599;
+  --marker-list-text-color: #000000;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --marker-list-background-color: #ffeb80;
+    --marker-list-text-color: #000000;
+  }
+}
+
+.marker {
+  background-color: var(--marker-list-background-color);
+  color: var(--marker-list-text-color);
+  padding: 3px 0;
+}
+
+.easyPublisher-marker-list {
+  background-color: var(--color-ui-background);
+  color: var(--color-ui-text);
+  border-radius: 4px;
+  padding: 6px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  position: fixed;
+  max-width: 300px;
+  min-width: 200px;
+  font-size: 1rem;
+  display: block;
+  pointer-events: auto;
+  font-size: 1rem;
+}
+
+.easyPublisher-marker-list[hidden] {
+  display: none;
+  pointer-events: none;
+}
+
+.easyPublisher-marker-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.easyPublisher-marker-list li {
+  padding: 3px 3px 3px 6px;
+  margin: 0;
+  background-color: var(--marker-list-background-color);
+  color: var(--marker-list-text-color);
+  border-radius: 1px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.easyPublisher-marker-list li a{
+  color: var(--marker-list-text-color);
+  text-decoration: none;
+  flex: 1;
+}
+
+.easyPublisher-marker-list li a:hover{
+  text-decoration: underline;
+}
+
+.easyPublisher-marker-list li .marker-delete-btn{
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.easyPublisher-marker-list li .marker-delete-btn svg{
+  width: 18px;
+  height: 18px;
+  color: var(--marker-list-text-color);
+  opacity: 0.5;
+}
+
+.easyPublisher-marker-list li .marker-delete-btn:hover svg{
+  opacity: 1;
+}
+
+

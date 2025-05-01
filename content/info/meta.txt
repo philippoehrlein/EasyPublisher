@@ -1,0 +1,12 @@
+# easyPublisher
+@author Philipp Oehrlein
+@description easyPublisher is a simple publishing tool for writers
+@keywords publishing, easy, markdown
+
+## TOC
+[[00-easyPublisher]]
+@description introduction to easyPublisher
+[[01-tool]]
+@description thoughts about digital tools
+[[02-guide]]
+[[03-features]]

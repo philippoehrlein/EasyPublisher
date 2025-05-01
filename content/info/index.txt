@@ -1,0 +1,7 @@
+# easyPublisher
+
+## Content
+1. [[00-easyPublisher | Welcome to easyPublisher]]
+2. [[01-tool | What Makes a Good Digital Tool?]]
+3. [[02-guide | How to Use easyPublisher]]
+4. [[03-features | What easyPublisher Can Do]]

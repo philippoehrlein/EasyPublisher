@@ -10,6 +10,8 @@
         <?= $metaTags ?>
     <?php endif; ?>
     
+    <link rel="sitemap" type="application/xml" href="<?= url('sitemap.xml') ?>">
+    
     <link rel="stylesheet" href="<?= url('core/assets/css/style.css') ?>">
     
     <?php if (file_exists(THEME_PATH . '/assets/css/style.css')): ?>

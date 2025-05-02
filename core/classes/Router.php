@@ -57,6 +57,12 @@ class Router {
      * Processes the request and forwards it to the appropriate handler
      */
     public function route() {
+        // Check if sitemap is requested
+        if ($this->requestPath === 'sitemap.xml') {
+            $this->generateSitemap();
+            return;
+        }
+        
         // Check if the index page is requested
         if ($this->requestPath === 'index') {
             $this->renderIndex();
@@ -71,6 +77,35 @@ class Router {
         } else {
             $this->render404();
         }
+    }
+    
+    /**
+     * Generates and outputs the sitemap.xml
+     */
+    private function generateSitemap() {
+        header('Content-Type: application/xml; charset=utf-8');
+        
+        $baseUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+        
+        $xml = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"/>');
+        
+        // Add homepage
+        $url = $xml->addChild('url');
+        $url->addChild('loc', $baseUrl);
+        $url->addChild('changefreq', 'daily');
+        $url->addChild('priority', '1.0');
+        
+        // Add all content pages
+        $contentList = $this->contentLoader->getAllContent();
+        foreach ($contentList as $content) {
+            $url = $xml->addChild('url');
+            $url->addChild('loc', $baseUrl . '/' . $content['slug']);
+            $url->addChild('changefreq', 'weekly');
+            $url->addChild('priority', '0.8');
+        }
+        
+        echo $xml->asXML();
+        exit;
     }
     
     /**

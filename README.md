@@ -116,3 +116,17 @@ You may NOT:
 - Use easyPublisher for commercial SaaS offerings
 
 For commercial use or if you're unsure about your use case, please contact me.
+
+### Third-Party Assets
+
+This project uses [Remix Icon](https://remixicon.com), licensed under the [Apache License 2.0](https://github.com/Remix-Design/RemixIcon/blob/master/License).
+
+### Dependencies
+
+This project uses the following PHP libraries:
+
+- [league/commonmark](https://github.com/thephpleague/commonmark) - BSD 3-Clause License
+- [wnx/commonmark-mark-extension](https://github.com/web-ninja/commonmark-mark-extension) - MIT License
+- [philippoehrlein/inline-footnotes](https://github.com/philippoehrlein/inline-footnotes) - MIT License
+
+All dependencies are compatible with the GPL-3.0 license.

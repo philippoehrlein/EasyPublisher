@@ -1,6 +1,8 @@
 <?php
 /**
  * ContentLoader - Loads and processes the content from the Markdown files
+ * @author Philipp Oehrlein
+ * @version 1.0.0
  */
 class ContentLoader {
     private $markdownParser;

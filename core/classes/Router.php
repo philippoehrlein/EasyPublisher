@@ -1,6 +1,8 @@
 <?php
 /**
  * Router - Processes the URL requests and forwards them to the correct content
+ * @author Philipp Oehrlein
+ * @version 1.0.0
  */
 class Router {
     private $requestPath;

@@ -1,6 +1,8 @@
 <?php
 /**
  * WikiLinkProcessor - Processes WikiLinks in Markdown
+ * @author Philipp Oehrlein
+ * @version 1.0.0
  */
 class WikiLinkProcessor {
     /**

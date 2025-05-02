@@ -81,24 +81,21 @@ class MetaRenderer {
         
         $meta = [];
         
-        // Entfernen von .txt-Endung, falls vorhanden
         $slug = preg_replace('/\.txt$/', '', $slug);
         
-        // Die meta.txt hat ein spezielles Format: [[WikiLink]]\n@key value
-        // Wir müssen also für jeden WikiLink den zugehörigen Metabereich extrahieren
+
         if (preg_match('/\[\[([^\]|]+)(?:\|[^\]]+)?\]\](.*?)(?=\[\[|\z)/s', $this->metaContent, $matches, PREG_OFFSET_CAPTURE)) {
-            // Durchlaufe alle gefundenen WikiLinks
             $offset = 0;
             do {
                 $linkName = trim($matches[1][0]);
                 $metaSection = trim($matches[2][0]);
                 
             
-                // Prüfe ob dieser Link zum gesuchten Slug passt
+                // Check if this link matches the desired slug
                 if (strtolower($linkName) === strtolower($slug) && $metaSection !== '') {
    
                     
-                    // Extrahiere die Metadaten aus dem Bereich nach dem Link
+                    // Extract the metadata from the area after the link
                     preg_match_all('/^@([a-z]+)\s+(.+)$/m', $metaSection, $metaMatches, PREG_SET_ORDER);
                     
                     foreach ($metaMatches as $match) {
@@ -107,11 +104,11 @@ class MetaRenderer {
                         $meta[$key] = $value;
                     }
                     
-                    // Gefunden, Suche beenden
+                    // Found, stop searching
                     break;
                 }
                 
-                // Setze den Offset für die nächste Suche
+                // Set the offset for the next search
                 $offset = $matches[0][1] + strlen($matches[0][0]);
                 
             } while (preg_match('/\[\[([^\]|]+)(?:\|[^\]]+)?\]\](.*?)(?=\[\[|\z)/s', $this->metaContent, $matches, PREG_OFFSET_CAPTURE, $offset));
@@ -133,7 +130,7 @@ class MetaRenderer {
         // Get page-specific metadata, if a slug is provided
         $pageMeta = [];
         if ($currentSlug) {
-            // Entferne .txt-Endung vom Slug, falls vorhanden
+            // Remove .txt-extension from slug, if present
             $currentSlug = preg_replace('/\.txt$/', '', $currentSlug);
             $pageMeta = $this->getPageMeta($currentSlug);
             

@@ -11,6 +11,8 @@ use PhilippOehrlein\InlineFootnotes\InlineFootnoteExtension;
 
 /**
  * MarkdownParser - Converts Markdown to HTML
+ * @author Philipp Oehrlein
+ * @version 1.0.0
  */
 class MarkdownParser {
     private $parser;

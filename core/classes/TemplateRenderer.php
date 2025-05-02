@@ -1,6 +1,8 @@
 <?php
 /**
  * TemplateRenderer - Renders templates with passed variables
+ * @author Philipp Oehrlein
+ * @version 1.0.0
  */
 class TemplateRenderer {
     private $layoutFile;

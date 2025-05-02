@@ -1,6 +1,8 @@
 <?php
 /**
  * ImageProcessor - Processes images in the content
+ * @author Philipp Oehrlein
+ * @version 1.0.0
  */
 class ImageProcessor {
     /**

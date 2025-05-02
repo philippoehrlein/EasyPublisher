@@ -1,7 +1,17 @@
 # easyPublisher
+easypublisher-svg.svg
 
-## Content
-1. [[00-easyPublisher | Welcome to easyPublisher]]
-2. [[01-tool | What Makes a Good Digital Tool?]]
-3. [[02-guide | How to Use easyPublisher]]
-4. [[03-features | What easyPublisher Can Do]]
+*A super lightweight publishing tool for people who want to write – not configure.*
+
+**Write. Save. Publish.**  
+easyPublisher turns your Markdown files into a working website — no setup, no database, no admin panel.  
+Perfect for writers, bloggers, documentation, or personal notes.
+
+→ No installation. No distractions. Just content.
+
+
+1. [[00-install-sync | Install & Sync]]
+2. [[01-writing | Writing with Markdown]]
+3. [[02-content-info | The `content/info` folder]]
+4. [[03-extend | Customization & Extensions]]
+

@@ -12,9 +12,7 @@ window.easyPublisher = {
   registerTextPlugin: function(plugin) {
     this.textPlugins.push(plugin);
   },
-  /**
-   * Initialisiere die Toolbar
-   */
+
   initToolbar: function(toolbar) {
     this.toolbarPlugins.forEach(function(plugin) {
       const button = plugin.init();
@@ -27,9 +25,7 @@ window.easyPublisher = {
       }
     });
   },
-  /**
-   * Initialisiere das Selektionsmenü
-   */
+
   initSelection: function() {
     if (this.selectionPlugins.length === 0) return;
     this.selectionMenu.init();
@@ -41,12 +37,15 @@ window.easyPublisher = {
         easyPublisher.selectionMenu.appendChild(button);
       }
     });
+  },
+
+  initTextPlugins: function() {
+    this.textPlugins.forEach(function(plugin) {
+      plugin.init();
+    });
   }
 }
 
-/**
- * Initialisiere die Toolbar und das Selektionsmenü
- */
 document.addEventListener('DOMContentLoaded', function() {
   const toolbar = document.getElementById('easyPublisher-toolbar');
   if(toolbar) {
@@ -54,11 +53,10 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   easyPublisher.initSelection();
+  easyPublisher.initTextPlugins();
+  ScrollManager.init();
 });
 
-/**
- * Speicherfunktionen
- */
 easyPublisher.store = (function() {
   const pageKey = location.pathname; 
   const prefix = "easyPublisher:" + pageKey + ":";
@@ -86,10 +84,6 @@ easyPublisher.store = (function() {
   };
 })();
 
-
-/**
- * Selektionsmenü
- */
 easyPublisher.selectionMenu = (function() {
   const menu = document.createElement('div');
   menu.setAttribute('id', 'easyPublisher-selection-menu');
@@ -154,3 +148,43 @@ easyPublisher.selectionMenu = (function() {
     }
   };
 })();
+
+const ScrollManager = {
+  lastScrollY: 0,
+
+  init() {
+      this.handleScroll = this.handleScroll.bind(this);
+      this.handleMouseMove = this.handleMouseMove.bind(this);
+      this.enableTracking();
+  },
+  
+  enableTracking() {
+      window.addEventListener('scroll', this.handleScroll);
+      document.addEventListener('mousemove', this.handleMouseMove);
+  },
+
+  handleMouseMove(e) {
+      
+      const header = document.querySelector('.article-header');
+      if (!header) return;
+      
+      if (e.clientY <= 100) {
+          header.classList.remove('hide');
+      } else if (window.scrollY > 100) {
+          header.classList.add('hide');
+      }
+  },
+
+  handleScroll() {
+      const currentScrollY = window.scrollY;
+      const header = document.querySelector('.article-header');
+      
+      if (currentScrollY > this.lastScrollY && currentScrollY > 100) {
+          header?.classList.add('hide');
+      } else {
+          header?.classList.remove('hide');
+      }
+
+      this.lastScrollY = currentScrollY;
+  }
+};

@@ -1,6 +1,7 @@
 # easyPublisher
 @author Philipp Oehrlein
-@description easyPublisher is a simple publishing tool for writers
+@authorurl https://philippoehrlein.de
+@description easyPublisher is a super lightweight publishing system that turns Markdown files into a full website – no setup, no database, no admin panel. Just content.
 @keywords publishing, easy, markdown
 
 ## TOC

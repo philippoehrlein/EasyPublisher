@@ -1,0 +1,77 @@
+# Customization & Extensions
+
+easyPublisher is designed to be simple — but still flexible.  
+You can change how your site looks and behaves without touching the core system.
+
+## Assets
+
+If a file called `theme/assets/css/style.css` exists, it will be loaded automatically.  
+Use it to override or extend default styles.
+
+## Themes (Snippets & Templates)
+
+You can override parts of the layout by creating matching files in your theme folder:
+
+- If `snippets/header.php` exists in your theme, it replaces the core version.
+- Same applies to `navigation.php`, `footer.php`, `head.php`, `scripts.php`
+- You can also override templates like `layout.php`, `index.php`, or `article.php`
+
+## Plugins
+
+Plugins allow you to add your own features — with JavaScript and optional CSS.
+
+If  plugin folder `theme/plugins` includes a `*.js` or `*.css` file, it will be loaded automatically.
+
+### Plugin types
+
+easyPublisher supports three types of plugins:
+
+#### 🧩 Text Plugins
+
+Used to modify or format the text before it gets rendered.
+```
+easyPublisher.registerTextPlugin({ 
+  init: function() {
+    // Your code here
+  }
+});
+```
+
+#### 🧰 Toolbar Plugins
+Adds buttons to the editor toolbar.
+
+```
+easyPublisher.registerToolbarPlugin({
+  init: function() {
+    const button = document.createElement('button');
+    button.classList.add('header-btn');
+    button.setAttribute('title', 'Marker');
+    button.setAttribute('aria-label', 'Marker');
+    button.setAttribute('role', 'button');
+    button.setAttribute('tabindex', '0');
+    button.innerHTML = svg;
+    return button;
+  },
+  toolbarReady: function() {
+    // Optional callback
+  }
+});
+```
+
+#### ✏️ Selection Plugins
+Adds buttons to the inline text selection menu.
+
+```
+easyPublisher.registerSelectionPlugin({
+  init: function() {
+    const button = document.createElement('button');
+    button.classList.add('selection-btn');
+    button.innerHTML = svg;
+
+    const markerData = easyPublisherMarker.getMarkerData(currentRange);
+    easyPublisherMarker.setMarker(markerData);
+
+    return button;
+  }
+});
+```

@@ -10,6 +10,6 @@
         <?= $this->snippet('footer'); ?>
     </footer>
     <?php if (isset($contentList)): ?>
-        <?= $this->snippet('navigation', ['contentList' => $contentList]); ?>
+        <?= $this->snippet('navigation', ['contentList' => $contentList, 'title' => $title]); ?>
     <?php endif; ?>
 </div>

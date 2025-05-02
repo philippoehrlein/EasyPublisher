@@ -1,0 +1,26 @@
+# Installation & Sync
+
+No setup. No installation. Just upload and publish.
+
+## How to install
+
+1. **[Download easyPublisher as ZIP](https://github.com/philippoehrlein/EasyPublisher/archive/refs/heads/main.zip)**  
+   Unzip the file on your computer.
+
+2. **Upload to your server**  
+   Use FTP or any file transfer tool to upload the unzipped folder to your web server.  
+   PHP 8+ is required.
+
+3. **That's it — your site is live**  
+   Visit your domain and start writing.
+
+---
+
+## Add & sync your content
+
+- All your pages go in the `/content` folder
+- Just add `.txt` files written in Markdown
+- Want to control the order? Name files like `01-intro.txt`, `02-about.txt`, etc.
+
+Want to configure the homepage, meta info, or add legal pages?  
+→ [Learn more about the `/content/info` folder](#link-to-info-folder-page)

@@ -1,0 +1,89 @@
+# Writing with Markdown
+
+easyPublisher is built around clean and simple writing — using plain text in Markdown[^Markdown is a markup language created by [John Gruber](https://daringfireball.net/projects/markdown/).] format.  
+It works best with [iA Writer](https://ia.net/writer), but any Markdown editor will do.
+
+## Supported syntax
+
+Everything that iA Writer supports will work out of the box.
+
+### Headings
+Use `#` to define headings. The more `#`, the deeper the level (like sections and subsections). Keep a logical order.
+
+```
+# Heading 1  
+## Heading 2  
+### Heading 3  
+#### Heading 4  
+##### Heading 5  
+###### Heading 6  
+```
+
+### Text formatting
+You can highlight, bold, italicize or strike through text:
+
+```
+==Highlight==  
+**Bold**, *Italic*, ~~Strikethrough~~
+```
+
+### Lists
+Lists start with a dash. You can nest them for sublists — perfect for multi-level ideas or outlines.
+
+```
+- List item
+- List item  
+    - Sub item
+    - Sub item
+```
+
+### WikiLinks
+Internal links use double brackets. You can optionally set a label:
+
+```
+[[filename]]  
+[[filename|Custom Label]]
+```
+
+### Horizontal line
+Use three dashes to insert a visual separator between sections.
+
+```
+---
+```
+
+### Code blocks
+Wrap code with triple backticks. It will be shown exactly as written.
+
+```
+<html></html>
+```
+
+### Images
+Just place the image file in the content/ folder and write its filename:
+
+```
+my-image.jpg
+```
+
+External images also work:
+```
+![](https://example.com/image.jpg)
+```
+
+### Footnotes
+Write inline footnotes like in iA Writer. They are numbered automatically:
+
+```
+This is a sentence with a footnote.[^ Example footnote text]
+```
+
+### Tables
+Use simple Markdown tables to organize information:
+
+```
+| Column A | Column B |
+|:--|:--|
+| Example | Example |
+| Example | Example |
+```

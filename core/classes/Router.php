@@ -83,7 +83,8 @@ class Router {
             $this->templateRenderer->render('index', [
                 'title' => $customIndex['title'],
                 'customContent' => $customIndex['html'],
-                'metaTags' => $this->metaRenderer->renderMetaTags('index')
+                'metaTags' => $this->metaRenderer->renderMetaTags('index'),
+                'metaTagsArray' => $this->metaRenderer->getMetaTagArray()
             ]);
         } else {
             // Generate the standard content directory
@@ -91,7 +92,8 @@ class Router {
             $this->templateRenderer->render('index', [
                 'title' => 'Homepage',
                 'contentList' => $contentList,
-                'metaTags' => $this->metaRenderer->renderMetaTags()
+                'metaTags' => $this->metaRenderer->renderMetaTags(),
+                'metaTagsArray' => $this->metaRenderer->getMetaTagArray()
             ]);
         }
     }
@@ -106,7 +108,8 @@ class Router {
             'title' => $globalTitle . ' - ' . $content['title'],
             'content' => $content['html'],
             'contentList' => $contentList,
-            'metaTags' => $this->metaRenderer->renderMetaTags($content['slug'])
+            'metaTags' => $this->metaRenderer->renderMetaTags($content['slug']),
+            'metaTagsArray' => $this->metaRenderer->getMetaTagArray()
         ]);
     }
     
@@ -123,7 +126,8 @@ class Router {
             $this->templateRenderer->render('article', [
                 'title' => $title,
                 'content' => $custom404['html'],
-                'metaTags' => $this->metaRenderer->renderMetaTags('404')
+                'metaTags' => $this->metaRenderer->renderMetaTags('404'),
+                'metaTagsArray' => $this->metaRenderer->getMetaTagArray()
             ]);
             return;
         }
@@ -143,7 +147,8 @@ class Router {
         $this->templateRenderer->render('article', [
             'title' => $title,
             'content' => $html,
-            'metaTags' => $this->metaRenderer->renderMetaTags()
+            'metaTags' => $this->metaRenderer->renderMetaTags(),
+            'metaTagsArray' => $this->metaRenderer->getMetaTagArray()
         ]);
     }
 } 

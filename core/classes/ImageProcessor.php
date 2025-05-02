@@ -20,14 +20,13 @@ class ImageProcessor {
       }, $markdown);
   
       // 2. Only Filenames (e.g. "image.jpg")
-      $markdown = preg_replace_callback('/(?<=^|\s)([^\s]+\.(jpg|jpeg|png|gif))(?=\s|$)/i', function($matches) {
+      $markdown = preg_replace_callback('/(?<=^|\s)([^\s]+\.(jpg|jpeg|png|gif|svg))(?=\s|$)/i', function($matches) {
           $image = $matches[1];
           if ($this->checkImageExists($image)) {
               return $this->replaceImageWithLink($image);
           }
           return $matches[0];
       }, $markdown);
-  
       return $markdown;
   }
 

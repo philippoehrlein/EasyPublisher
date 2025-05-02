@@ -1,0 +1,76 @@
+# The `content/info` folder
+
+The content/info folder lets you control key parts of your website – using simple text files.
+There’s no interface, no database – just plain files with a few special lines that define how your site behaves.
+
+All files are optional. If you don’t need them, just delete them – or the whole folder. easyPublisher will still work just fine.
+
+## Available files and what they do
+### `config.txt`
+
+Set basic global settings for your site. For now, only two options exist:
+```
+@suffix txt  
+@lang en
+```
+- `@suffix` defines the file extension you use for content files (e.g. `.txt` or `.md`)
+- `@lang` sets the language code for your website (e.g. `en`, `de`, ...)
+
+---
+
+### `index.txt`
+
+Overrides the default homepage.  
+If you want full control over your landing page, just write your own `index.txt`.
+
+---
+
+### `meta.txt`
+
+Controls meta information for your website (SEO + structure) and the navigation.  
+
+Basic example:
+```
+# Site Title  
+@author Your Name  
+@authorurl https://example.com  
+@description Description for Search Engines about 160 characters
+@keywords this, helps, search engines
+
+## TOC
+[[ filename ]]
+[[ 01-filename ]]
+@author Overrides the global Authors Name for 01-filename
+@description Overides the global description for 01-filename
+[[ 02-filename ]]
+@keywords overrides, global keywords, for, 02-filename
+
+```
+
+What it does:
+- The `#` heading is used as your website title
+- The `@` lines below are used for meta tags and schema data
+- The `## TOC` section defines your navigation and allows descriptions for each page
+
+---
+
+### `contact.txt`, `imprint.txt`, `privacy.txt`
+
+These files create optional legal or information pages:
+- `contact.txt` → contact page
+- `imprint.txt` → imprint/legal info
+- `privacy.txt` → privacy policy
+
+Add them if you need them – they will be added automatically to the core footer.
+
+---
+
+### `404.txt`
+
+Customize the “Page not found” message.  
+If missing, a default message will be shown.
+
+---
+
+Need help writing Markdown for these files?  
+→ [[01-writing | See the Markdown syntax guide]]

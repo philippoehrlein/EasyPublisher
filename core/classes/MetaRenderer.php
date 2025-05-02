@@ -144,8 +144,6 @@ class MetaRenderer {
         // Create HTML meta tags
         $html = '';
         
-        
-        
         // Further general meta tags
         foreach ($meta as $key => $value) {
             // Add custom meta tags
@@ -154,5 +152,31 @@ class MetaRenderer {
         }
         
         return $html;
+    }
+
+    /**
+     * Returns the meta tags as an array (instead of rendering HTML)
+     *
+     * @param string $currentSlug The current page slug (optional)
+     * @return array Array of ['name' => ..., 'content' => ...]
+     */
+    public function getMetaTagArray($currentSlug = null) {
+        $globalMeta = $this->getGlobalMeta();
+        $currentSlug = getFileNameBySlug($currentSlug);        
+
+        $pageMeta = [];
+        if ($currentSlug) {
+            $currentSlug = preg_replace('/\.txt$/', '', $currentSlug);
+            $pageMeta = $this->getPageMeta($currentSlug);
+        }
+
+        $meta = array_merge($globalMeta, $pageMeta);
+
+        $tagArray = [];
+        foreach ($meta as $key => $value) {
+            $tagArray[$key] = $value;
+        }
+
+        return $tagArray;
     }
 }

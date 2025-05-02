@@ -1,3 +1,5 @@
+![easyPublisher](.github/easypublisher.png)
+
 # easyPublisher
 
 A super lightweight publishing tool for writers who want to focus on content, not technology.

@@ -10,6 +10,8 @@ A super lightweight publishing tool for writers who want to focus on content, no
 
 easyPublisher is a simple, file-based publishing system that lets you write and publish content without any technical setup. Just write your content in Markdown, drop it in the content folder, and you're done.
 
+➡️ **Learn more at the official landing page:** [easypublisher.philippoehrlein.de](https://easypublisher.philippoehrlein.de)
+
 ## Features
 
 - **Zero Configuration**: No setup required, just start writing

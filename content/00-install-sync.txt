@@ -23,4 +23,4 @@ No setup. No installation. Just upload and publish.
 - Want to control the order? Name files like `01-intro.txt`, `02-about.txt`, etc.
 
 Want to configure the homepage, meta info, or add legal pages?  
-→ [Learn more about the `/content/info` folder](#link-to-info-folder-page)
+→ [[02-content-info | Learn more about the `/content/info` folder]]

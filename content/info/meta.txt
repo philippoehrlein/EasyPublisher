@@ -5,9 +5,11 @@
 @keywords publishing, easy, markdown
 
 ## TOC
-[[00-easyPublisher]]
-@description introduction to easyPublisher
-[[01-tool]]
-@description thoughts about digital tools
-[[02-guide]]
-[[03-features]]
+[[00-install-sync]]
+@description Learn how to install easyPublisher and sync your texts.
+[[01-writing]]
+@description Basic documentation for writing with Markdown.
+[[02-content-info]]
+@description Learn how to configure your easyPublisher installation.
+[[03-extend]] 
+@description Style and extend your publication. Add your own Plugins.

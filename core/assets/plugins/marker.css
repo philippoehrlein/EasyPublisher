@@ -14,6 +14,7 @@
   background-color: var(--marker-list-background-color);
   color: var(--marker-list-text-color);
   padding: 3px 0;
+  scroll-margin-top: 20vh;
 }
 
 .easyPublisher-marker-list {

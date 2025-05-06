@@ -57,6 +57,11 @@ class Router {
      * Processes the request and forwards it to the appropriate handler
      */
     public function route() {
+        // Ignore Theme-Assets
+        if (strpos($this->requestPath, 'theme/assets/') === 0) {
+            return;
+        }
+
         // Check if sitemap is requested
         if ($this->requestPath === 'sitemap.xml') {
             $this->generateSitemap();
